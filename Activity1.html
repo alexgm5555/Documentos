@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>html { font-size: 14px; font-family: Arial, Helvetica, sans-serif; }</style>
+    <title>Documentos</title>
+    <script src="scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="scripts/jspdf.js"></script>
+    <script type="text/javascript" src="scripts/jspdf.plugin.standard_fonts_metrics.js"></script>
+    <script type="text/javascript" src="scripts/jspdf.plugin.split_text_to_size.js"></script>
+    <script type="text/javascript" src="scripts/jspdf.plugin.from_html.js"></script>
+    <script type="text/javascript" src="scripts/FileSaver.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jspdf.js"></script>
+    <script type="text/javascript" src="scripts/jspdf.plugin.standard_fonts_metrics.js"></script>
+    <script type="text/javascript" src="scripts/jspdf.plugin.split_text_to_size.js"></script>
+    <script type="text/javascript" src="scripts/jspdf.plugin.from_html.js"></script>
+    <script type="text/javascript" src="scripts/FileSaver.js"></script>
+    <link rel="stylesheet" href="css/kendo.common.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/kendo.metro.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/kendo.default.mobile.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/estilos.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/component.css" media="screen" title="no title" charset="utf-8">
+    <script src="jquery.min.js"></script>
+    <script src="kendo.all.min.js"></script>
+</head>
+<body>
+<style>
+    .botonDescargar {
+        display: block;
+        margin: 0 auto;
+        height: 46px;
+        width: 51px;
+        background-image:url("images/descarga.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor:pointer;
+    }
+    .botonDescargar.hover {
+        display: block;
+        margin: 0 auto;
+        height: 46px;
+        width: 51px;
+        background-image:url("images/descarga.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor:pointer;
+    }
+    .botonVer {
+        display: block;
+        margin: 0 auto;
+        height: 46px;
+        width: 51px;
+        background-image:url("images/ver.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor:pointer;
+    }
+    .botonVer.hover {
+        display: block;
+        margin: 0 auto;
+        height: 46px;
+        width: 51px;
+        background-image:url("images/ver.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor:pointer;
+    }
+    .botonPdf {
+        display: block;
+        margin: 0 auto;
+        height: 46px;
+        width: 51px;
+        background-image:url("images/pdf.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor:pointer;
+    }
+    .botonPdf.hover {
+        display: block;
+        margin: 0 auto;
+        height: 46px;
+        width: 51px;
+        background-image:url("images/pdf.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor:pointer;
+    }
+
+    .botonNoVer {
+        display: block;
+        margin: 0 auto;
+        height: 46px;
+        width: 51px;
+        background-image:url("images/NoVer.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor:pointer;
+    }
+    .botonNoVer.hover {
+        display: block;
+        margin: 0 auto;
+        display: block;
+        margin: auto;
+        height: 46px;
+        width: 51px;
+        background-image:url("images/NoVer.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor:pointer;
+    }
+    .botonNoPdf {
+        display: block;
+        margin: 0 auto;
+        height: 46px;
+        width: 51px;
+        background-image:url("images/NoPdf.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor:pointer;
+    }
+    .botonNoPdf.hover {
+        display: block;
+        margin: 0 auto;
+        height: 46px;
+        width: 51px;
+        background-image:url("images/NoPdf.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor:pointer;
+    }
+</style>
+<table align="left" cellpadding="1" cellspacing="1" class="fondogris1" id="table1" width="100%">
+    <colgroup span="1">
+        <col width="70px" span="1">
+        <col span="1">
+    </colgroup>
+    <tbody>
+    <tr>
+        <td align="left" class="espacio" valign="middle" rowspan="1" colspan="1">
+            <div align="left">
+                <img border="0" id="image01" width="51" height="46" src="images/Nav-64.png" tabindex="0">
+            </div>
+        </td>
+        <td align="left" class="default" valign="middle" rowspan="1" colspan="1">
+            <div align="left" >
+                <font color="#ffffff" face="Arial" size="4">Documentos</font>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id="example">
+    <div id="grid"></div>
+    <script>
+        var usuario="jsandrea";
+        var nombrearchivo;
+        var crudServiceBaseUrl = "http://190.144.16.114:8810/rest/Documents/List/";
+        var crudServiceGetFile = "http://190.144.16.114:8810/rest/Documents/GetFile/";
+        var crudServiceGetFileAsPDF ="http://190.144.16.114:8810/rest/Documents/GetFileAsPDF/";
+        $(document).ready(function () {
+            dataSource = new kendo.data.DataSource({
+                transport: {
+                    read:  {
+                        url: crudServiceBaseUrl + usuario,
+                        dataType: "json"
+                    },
+                    parameterMap: function(options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return {models: kendo.stringify(options.models)};
+                        }
+                    }
+                },
+                batch: true,
+                pageSize: 20,
+                schema: {
+
+                    data:"response.dsfiles.dsfiles.ttfiles",
+                    model: {
+                        fields: {
+                            nomfile: { type: "string" },
+                            tamfile: { type: "integer" },
+                            fecfile: { type: "date:MM-dd-yyyy"},}
+                    }
+                }
+            });
+
+            $("#grid").kendoGrid({
+                dataSource: dataSource,
+                height: 550,
+                columns: [
+                    { field: "nomfile", title: "Documento", format: "{0:c}", width: "auto" },
+                    { field: "tamfile", title:"Tama&ntilde;o de Archivo", format: "{0:c}", },
+                    { field: "fecfile", title:"Fecha de Creacion", format: "{0:c}", },
+                    {command: [{name:"descargar", text: " ",click:showDetails ,template: "<a class='k-grid-Descargar'><span class='k-icon botonDescargar'></span></a>"}] , title: "&nbsp;", width: "82px" },
+                    {command: [{name:"ver", text: " ",click:htmldoc ,template: "<a class='k-grid-Ver'><span class='k-icon botonVer'></span></a>"}] , title: "&nbsp;", width: "82px" },
+                    {command: [{name:"pdf", text: " ",click:pdf,template: "<a class='k-grid-pdf '><span class='k-icon botonPdf '></span></a>"}] , title: "&nbsp;", width: "82px" }
+                ],
+            });
+        });
+
+        function showDetails(e) {
+            var Download = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: crudServiceGetFile +usuario+nombrearchivo, // url del servicio a consumir
+                        dataType: "json",//, // tipo de dato json
+                    }
+                },
+                schema: {
+                    data:"response.polfile",
+                }
+            });
+            alert(JSON.stringify(Download))
+            try {
+                sessionStorage.setItem("tipo", "archivo");
+                e.preventDefault();
+                var row = $(e.target).closest("tr");
+                var item = $("#grid").data("kendoGrid").dataItem(row);
+                item = item.nomfile;
+                item = item.toString();
+                formWidgetHandler.saveDataSlots();
+            } catch (e) {
+                alert(e);
+            }
+        }
+        function htmldoc(e) {
+            try {
+                sessionStorage.setItem("tipo", "html");
+                e.preventDefault();
+                var row = $(e.target).closest("tr");
+                var item = $("#grid").data("kendoGrid").dataItem(row);
+                item = item.nomfile;
+                item = item.toString();
+                document.getElementById("").value =  item;
+                document.getElementById("").value =  item;
+                formWidgetHandler.saveDataSlots();
+                document.getElementById("").click();
+            } catch (e) {
+                alert(e);
+            }
+        }
+        function pdf(e) {
+            var DataPDF = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: crudServiceGetFileAsPDF+usuario+nombrearchivo, // url del servicio a consumir
+                        dataType: "json",//, // tipo de dato json
+                    }
+                },
+                schema: {
+                    data:"response.polfile",
+                }
+            });
+            alert(JSON.stringify(DataPDF))
+            try {
+                sessionStorage.setItem("tipo", "pdf");
+                e.preventDefault();
+                var row = $(e.target).closest("tr");
+                var item = $("#grid").data("kendoGrid").dataItem(row);
+                item = item.nomfile;
+                item = item.toString();
+                document.getElementById("botonPdf").value =  item;
+                formWidgetHandler.saveDataSlots();
+
+            } catch (e) {
+                alert(e);
+            }
+        }
+        function download(filename, text, tipo) {
+            var res = filename.split(".");
+            filename = res[0];
+            extension = res[1];
+            try {
+                if (tipo == "archivo") {
+                    filename = filename + "." + extension;
+                    if (extension == "pdf") {
+                        var byteCharacters = atob(text);
+                        var byteNumbers = new Array(byteCharacters.length);
+                        for (var i = 0; i < byteCharacters.length; i++) {
+                            byteNumbers[i] = byteCharacters.charCodeAt(i);
+                        }
+                        var byteArray = new Uint8Array(byteNumbers);
+                        var blob = new Blob([ byteArray ], {
+                            type : "application/pdf"
+                        });
+                        saveAs(blob, filename);
+                    } else {
+                        var blob = new Blob([ text ]);
+                        saveAs(blob, filename);
+                    }
+                } else if (tipo == "html") {
+                    filename = filename + ".pdf";
+                    if (extension == "pdf") {
+
+                        var byteCharacters = atob(text);
+                        var byteNumbers = new Array(byteCharacters.length);
+                        for (var i = 0; i < byteCharacters.length; i++) {
+                            byteNumbers[i] = byteCharacters.charCodeAt(i);
+                        }
+                        var byteArray = new Uint8Array(byteNumbers);
+                        var blob = new Blob([ byteArray ], {
+                            type : "application/pdf"
+                        });
+                        saveAs(blob, filename);
+                    } else {
+                        var blob = new Blob([ text ]);
+                        var fileURL = URL.createObjectURL(blob);
+                        window.open(fileURL);
+                    }
+                } else if (tipo == "pdf") {
+                    filename = filename + ".pdf";
+                    if (extension == "pdf") {
+                        var byteCharacters = atob(text);
+                        var byteNumbers = new Array(byteCharacters.length);
+                        for (var i = 0; i < byteCharacters.length; i++) {
+                            byteNumbers[i] = byteCharacters.charCodeAt(i);
+                        }
+                        var byteArray = new Uint8Array(byteNumbers);
+                        var blob = new Blob([ byteArray ], {
+                            type : "application/pdf"
+                        });
+                        saveAs(blob, filename);
+                        return;
+                    } else {
+                        var blob = new Blob([ text ]);
+                        saveAs(blob, filename);
+                        return;
+                    }
+                }
+            } catch (e) {
+                alert(e);
+            }
+        }
+
+        function mensajeAlerta(msj) {
+            var notificacionError = $("#notification").kendoNotification({
+                position : {
+                    pinned : true,
+                    top : 30,
+                    right : 30
+                },
+                autoHideAfter : 0,
+                stacking : "down",
+                show : onShow,
+                templates : [ {
+                    type : "error",
+                    template : $("#errorTemplate").html()
+                } ]
+            }).data("kendoNotification");
+            notificacionError.show({
+                title : "Ocurrio un Error",
+                message : msj
+            }, "error");
+        }
+
+        function form_onLoad(eventContext){
+            document();}
+
+
+
+
+
+        function showDetailsEditarV2(e){//creacion del popup de CU
+            try{
+                e.preventDefault();//Aca se pueden colocar las funcionalidades dependiendo del uso del click
+                clickGrilla= this.dataItem($(e.currentTarget).closest("tr"));
+                var grid = $("#div3").data("kendoGrid");
+                var fila = $(e.currentTarget).closest("tr")[0].rowIndex;
+                grid.select(grid.tbody.find(">tr:not(.k-grouping-row)").eq(fila));
+
+            }catch(e){
+                alert("Function: showDetailsEditarV2 Error: "+e.message);
+            }
+        }
+    </script>
+</div>
+
+</body>
+</html>
