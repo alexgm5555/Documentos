@@ -1,0 +1,169 @@
+<configform synchronous="true" version="1.3">
+    <block title="configuration" label="configuration" hidden="true">
+        <param name="con.hostname" access="PRESET" label="con.hostname" type="java.lang.String" value="ServidorPruebas"/>
+        <param name="con.servicename" access="PRESET" label="con.servicename" type="java.lang.String" value="9000"/>
+        <param name="con.appservice" access="PRESET" label="con.appservice" type="java.lang.String" value="Integrity"/>
+        <param name="con.username" access="PRESET" label="con.username" type="java.lang.String" value=""/>
+        <param name="con.password" access="PRESET" label="con.password" type="java.lang.String" value=""/>
+        <param name="con.appserverinfo" access="PRESET" label="con.appserverinfo" type="java.lang.String" value=""/>
+        <param name="con.loginproc" access="PRESET" label="con.loginproc" type="java.lang.String" value=""/>
+        <param name="con.logoutproc" access="PRESET" label="con.logoutproc" type="java.lang.String" value=""/>
+        <param name="con.sessionmodel" access="PRESET" label="con.sessionmodel" type="java.lang.String" value="Session-free"/>
+        <param name="con.ssl" access="PRESET" label="con.ssl" type="java.lang.Boolean" value="false"/>
+        <param name="con.directConnect" access="PRESET" label="con.directConnect" type="java.lang.Boolean" value="true"/>
+        <param name="con.appserverpath" access="PRESET" label="con.appserverpath" type="java.lang.String" value="AppServerDC://ServidorPruebas:9000/Integrity"/>
+        <param name="con.operationname" access="PRESET" label="con.operationname" type="java.lang.String" value="SIConsultamemorando"/>
+        <param name="dev.filename" access="CONFIG_ONLY" label="dev.filename" type="java.lang.String" value="C:\\OpenEdge\\Work\\PortalNomina\\Documentos\\SIConsultamemorando.p"/>
+        <param name="proc.path" access="CONFIG_ONLY" label="proc.path" type="java.lang.String" value=""/>
+        <param name="idl.text" access="CONFIG_ONLY" label="idl.text" type="java.lang.String">
+<pidl:description targetNamespace="urn:schemas-progress-com:bpm:appserverbinding:0001" serviceType="wsad:OEAppServerInvoke" xmlns:oedatatype="http://www.progress.com/adapters/oe" xmlns:wsad="urn:schemas-progress-com:bpm:appserverbinding:0001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pidl="http://www.progress.com/caf/idl1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<pidl:types>
+
+<javaTypes xmlns:javatype="http://www.progress.com/adapters/javatypesystem" xmlns:jts="http://www.progress.com/adapters/idl1.0/javatype" targetNamespace="http://www.progress.com/adapters/oe" xmlns="http://www.progress.com/adapters/javatypesystem">
+    <javatype:javaType className="com.progress.lang.Date" extend="jts:Object" name="date"/>
+    <javatype:javaType className="com.progress.lang.Date" extend="jts:Object" name="datetime-tz"/>
+    <javatype:javaType className="com.progress.lang.Memptr" extend="jts:Object" name="raw"/>
+    <javatype:javaType className="com.progress.lang.Handle" extend="jts:Object" name="handle"/>
+    <javatype:javaType className="com.progress.lang.Integer" extend="jts:Object" name="integer"/>
+    <javatype:javaType className="com.progress.lang.Logical" extend="jts:Object" name="logical"/>
+    <javatype:javaType className="com.progress.lang.RowId" extend="jts:Object" name="rowid"/>
+    <javatype:javaType className="com.progress.lang.DataSet" extend="jts:Object" name="dataset-handle"/>
+    <javatype:javaType className="com.progress.lang.Character" extend="jts:Object" name="character"/>
+    <javatype:javaType className="com.progress.lang.Date" extend="jts:Object" name="datetime"/>
+    <javatype:javaType className="com.progress.lang.Character" extend="jts:Object" name="longchar"/>
+    <javatype:javaType className="com.progress.lang.Table" extend="jts:Object" name="table-handle"/>
+    <javatype:javaType className="com.progress.lang.Int64" extend="jts:Object" name="int64"/>
+    <javatype:javaType className="com.progress.lang.Memptr" extend="jts:Object" name="memptr"/>
+    <javatype:javaType className="com.progress.lang.Decimal" extend="jts:Object" name="decimal"/>
+    <javatype:javaType className="com.progress.lang.DataSet" extend="jts:Object" name="dataset"/>
+    <javatype:javaType className="com.progress.lang.Table" extend="jts:Object" name="table"/>
+</javaTypes>
+
+</pidl:types>
+  <pidl:interface name="com.progress.openedge.pdt.bpminterfaces">
+    <pidl:operation name="SIConsultamemorando">
+    </pidl:operation>
+  </pidl:interface>
+  <pidl:binding name="com.progress.openedge.pdt.bpmbindings" interface="wsad:com.progress.openedge.pdt.bpminterfaces" type="urn:schemas-progress-com:bpm:appserverbinding:0001">
+<wsad:Operation isPersistent="false" useFullName="false">
+  <wsad:Name>SIConsultamemorando</wsad:Name>
+  <wsad:ProcPath/>
+  <wsad:ProPath/>
+  <wsad:ProcExt>p</wsad:ProcExt>
+  <wsad:ProcDetail isCustomized="false" usesUnknownDefault="true" useRetVal="false" usesTTMappingDefault="true" IsTTResultSet="true" usesBeforeImageDefault="true" IsMappedToSubmit="false">
+    <wsad:Name>SIConsultamemorando</wsad:Name>
+    <wsad:HelpString></wsad:HelpString>
+  </wsad:ProcDetail>
+</wsad:Operation>
+  </pidl:binding>
+</pidl:description>
+</param>
+        <param name="config.text" access="CONFIG_ONLY" label="config.text" type="java.lang.String">
+<java version="1.8.0_40" class="java.beans.XMLDecoder">
+ <object class="com.savvion.sbm.adapters.oe.model.Procedure">
+  <void property="name">
+   <string>SIConsultamemorando</string>
+  </void>
+  <void property="operations">
+   <array class="com.savvion.sbm.adapters.oe.model.Operation" length="1">
+    <void index="0">
+     <object class="com.savvion.sbm.adapters.oe.model.Operation">
+      <void property="mainProc">
+       <boolean>true</boolean>
+      </void>
+      <void property="name">
+       <string>SIConsultamemorando</string>
+      </void>
+      <void property="params">
+       <array class="com.savvion.sbm.adapters.oe.model.Parameter" length="5">
+        <void index="0">
+         <object class="com.savvion.sbm.adapters.oe.model.Parameter">
+          <void property="dataType">
+           <string>CHARACTER</string>
+          </void>
+          <void property="input">
+           <boolean>true</boolean>
+          </void>
+          <void property="name">
+           <string>picidUser</string>
+          </void>
+         </object>
+        </void>
+        <void index="1">
+         <object class="com.savvion.sbm.adapters.oe.model.Parameter">
+          <void property="dataType">
+           <string>CHARACTER</string>
+          </void>
+          <void property="input">
+           <boolean>true</boolean>
+          </void>
+          <void property="name">
+           <string>picmemo</string>
+          </void>
+         </object>
+        </void>
+        <void index="2">
+         <object class="com.savvion.sbm.adapters.oe.model.Parameter">
+          <void property="dataType">
+           <string>MEMPTR</string>
+          </void>
+          <void property="name">
+           <string>pocmpmemo</string>
+          </void>
+          <void property="output">
+           <boolean>true</boolean>
+          </void>
+         </object>
+        </void>
+        <void index="3">
+         <object class="com.savvion.sbm.adapters.oe.model.Parameter">
+          <void property="dataType">
+           <string>CHARACTER</string>
+          </void>
+          <void property="name">
+           <string>pocestado</string>
+          </void>
+          <void property="output">
+           <boolean>true</boolean>
+          </void>
+         </object>
+        </void>
+        <void index="4">
+         <object class="com.savvion.sbm.adapters.oe.model.Parameter">
+          <void property="dataType">
+           <string>INTEGER</string>
+          </void>
+          <void property="name">
+           <string>poireturnid</string>
+          </void>
+          <void property="output">
+           <boolean>true</boolean>
+          </void>
+         </object>
+        </void>
+       </array>
+      </void>
+     </object>
+    </void>
+   </array>
+  </void>
+ </object>
+</java>
+</param>
+        <param name="config.loadondrag" access="CONFIG_ONLY" label="config.loadondrag" type="java.lang.Boolean" value="false"/>
+        <param name="caf.archive" access="PRESET" label="caf.archive" type="java.lang.String" value="ConsultaMemo.caar"/>
+        <param name="caf.pidl" access="PRESET" label="caf.pidl" type="java.lang.String" value="ConsultaMemo.bizoe"/>
+    </block>
+    <block title="data" label="Type Mapping" hidden="false">
+        <param name="picidUser" access="I" label="picidUser" type="com.progress.lang.Character" value=""/>
+        <param name="picidUser.type" access="CONFIG_ONLY" label="picidUser" type="java.lang.String" value="com.progress.lang.Character"/>
+        <param name="picmemo" access="I" label="picmemo" type="com.progress.lang.Character" value=""/>
+        <param name="picmemo.type" access="CONFIG_ONLY" label="picmemo" type="java.lang.String" value="com.progress.lang.Character"/>
+        <param name="pocmpmemo" access="O" label="pocmpmemo" type="com.progress.lang.Memptr" value=""/>
+        <param name="pocmpmemo.type" access="CONFIG_ONLY" label="pocmpmemo" type="java.lang.String" value="com.progress.lang.Memptr"/>
+        <param name="pocestado" access="O" label="pocestado" type="com.progress.lang.Character" value=""/>
+        <param name="pocestado.type" access="CONFIG_ONLY" label="pocestado" type="java.lang.String" value="com.progress.lang.Character"/>
+        <param name="poireturnid" access="O" label="poireturnid" type="com.progress.lang.Integer" value=""/>
+        <param name="poireturnid.type" access="CONFIG_ONLY" label="poireturnid" type="java.lang.String" value="com.progress.lang.Integer"/>
+    </block>
+</configform>

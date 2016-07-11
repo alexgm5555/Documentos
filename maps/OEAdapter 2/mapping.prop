@@ -1,0 +1,11 @@
+#Fri Dec 04 16:19:14 COT 2015
+adapter-class=com.savvion.sbm.adapters.oe.OEAdapter
+map-configurator=com.savvion.sbm.adapters.framework.CAFGroupMapConfigurator
+adapter-configurator=com.savvion.sbm.adapters.oe.OEAdapterConfigurationDialog
+AdapterName=GenericOEAdapter
+log-level=10
+runtime-mapper=com.savvion.sbm.adapters.framework.GroupMapper
+AdapterCategory=OEAdapters
+icon=oe.png
+instance=true
+adaplet=false

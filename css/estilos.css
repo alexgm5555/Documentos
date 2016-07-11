@@ -1,0 +1,84 @@
+ 47484 47484.Login {
+	background-image: url("images/Login.png")
+}
+.margensuperior {
+	margin-top: 100px
+}
+.tablaTamano{
+    width: 98%;
+    margin-left: 1%;
+    margin-right:  1%;
+}
+.resaltarTabla{
+    border: 3px solid black;
+    width: 100%;
+    border-color: #80bd28;
+    
+}
+.funcion {
+	border-top-color: #e0e0e0;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-left-color: #e0e0e0;
+}
+.funcionpend{
+	border-left-color: #ef9f28;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-top-color: #e0e0e0;
+	border-top-style: solid;
+	border-top-width: 1px
+}
+.seleccion {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #e0e0e0;
+	border-left-style: solid;
+	border-left-width: 1px
+}
+.fondogris {
+	background-color: #e0e0e0;
+
+}
+.popup {
+	border-style: solid;
+	border-color: #c0c0c0;
+	border-width: 1px
+}
+.fondo {
+	background-color: #ECF1EF
+}
+.fondogris1 {
+    background-color: #47484a
+}
+	
+.bordeabajo {
+	border-bottom-color: #e0e0e0;
+    border-bottom-style: solid;
+    border-bottom-width: 1px
+}
+.campo1{
+    border-left-color: #80bd28;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-top-color: #e0e0e0;
+    border-top-style: solid;
+    border-top-width: 1px
+   }
+.tabla {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e0e0e0;
+     }
+     .espacio {
+    height: 40px;
+     }
+     .espacio1{
+        height:20px;
+     }
+     
+.esconder{
+	display:none
+}

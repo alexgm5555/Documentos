@@ -1,0 +1,20 @@
+<map version="1.3">
+  <param name="caf.pidl" type="java.lang.String" value="ConsultaListaMemos.bizoe"/>
+  <param name="con.appserverpath" type="java.lang.String" value="AppServerDC://ServidorPruebas:9000/Integrity"/>
+  <param name="con.username" type="java.lang.String" value=""/>
+  <param name="picidUser" type="com.progress.lang.Character" value="@usuario"/>
+  <param name="con.operationname" type="java.lang.String" value="SIConsultalistmemorando"/>
+  <param name="con.appserverinfo" type="java.lang.String" value=""/>
+  <param name="con.logoutproc" type="java.lang.String" value=""/>
+  <param name="con.hostname" type="java.lang.String" value="ServidorPruebas"/>
+  <param name="piimes" type="com.progress.lang.Integer" value="@mes"/>
+  <param name="con.password" type="java.lang.String" value=""/>
+  <param name="con.sessionmodel" type="java.lang.String" value="Session-free"/>
+  <param name="con.directConnect" type="java.lang.Boolean" value="true"/>
+  <param name="con.appservice" type="java.lang.String" value="Integrity"/>
+  <param name="caf.archive" type="java.lang.String" value="ConsultaListaMemos.caar"/>
+  <param name="con.loginproc" type="java.lang.String" value=""/>
+  <param name="con.servicename" type="java.lang.String" value="9000"/>
+  <param name="piiano" type="com.progress.lang.Integer" value="@ano"/>
+  <param name="con.ssl" type="java.lang.Boolean" value="false"/>
+</map>

@@ -1,0 +1,5 @@
+<map version="1.3">
+  <param name="estado" type="com.progress.lang.Character" value="@pocestado"/>
+  <param name="ListaArchivos" type="com.progress.lang.LongChar" value="@polcdata"/>
+  <param name="idreturn" type="com.progress.lang.Integer" value="@poireturnid"/>
+</map>

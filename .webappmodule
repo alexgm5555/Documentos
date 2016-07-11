@@ -1,0 +1,10 @@
+#Thu Dec 03 10:52:13 COT 2015
+application.name=Documentos
+adapter.version=8.1
+module.type=com.savvion.studio.designer.module.webapp
+application.mainprocessname=Documentos
+module.id=bab0d3ee-e542-4c07-a96d-a91f95d7171b
+module.version=8
+application.mainappfile=Documentos/WEB-INF/template/Documentos.swt
+module.name=Documentos
+application.root=Documentos

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Form SYSTEM "form.dtd" >
+<Form version="8.1">
+  <DataSources>
+    <DataSource name="user"/>
+  </DataSources>
+  <head/>
+  <body class="apbody">
+    <table align="center" cellpadding="0" cellspacing="0" width="100%">
+      <tbody>
+        <tr>
+          <td colspan="2">
+            <div align="left">
+              <div align="center">
+                <control dateOnly="false" format="reset" id="button_reset" password="false" tabindex="0" type="button" version="1" widgetType="basic"/>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br clear="all"/>
+  </body>
+</Form>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Form SYSTEM "form.dtd" >
+<Form version="8.1">
+  <DataSources>
+    <DataSource name="user"/>
+  </DataSources>
+  <head>
+    <link rel="stylesheet" type="bizsolo"/>
+  </head>
+  <body class="apbody">
+    <table id="table9" width="100%" align="center" cellpadding="4" cellspacing="1" class="apsegtblinbg">
+      <tbody>
+        <tr>
+          <td width="16%" colspan="6" class="apsegtitle">
+            <div align="center">
+              <b>
+                <field type="portal" name="workitemName">Activity 1:item</field>
+              </b>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td width="16%" class="apseggenlabel">
+            <b>Instructions</b>
+          </td>
+          <td width="16%" colspan="5" class="apseggendata">
+            <field type="portal" name="bizsite_instruction">Instructions</field>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</Form>
