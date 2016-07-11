@@ -1,0 +1,103 @@
+.botonDescargar {
+    display: block;
+    margin: 0 auto;
+    height: 46px;
+    width: 51px;
+    background-image:url("images/descarga.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor:pointer;
+}
+.botonDescargar.hover {
+    display: block;
+    margin: 0 auto;
+    height: 46px;
+    width: 51px;
+    background-image:url("images/descarga.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor:pointer;
+}
+.botonVer {
+    display: block;
+    margin: 0 auto;
+    height: 46px;
+    width: 51px;
+    background-image:url("images/ver.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor:pointer;
+}
+.botonVer.hover {
+    display: block;
+    margin: 0 auto;
+    height: 46px;
+    width: 51px;
+    background-image:url("images/ver.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor:pointer;
+}
+.botonPdf {
+    display: block;
+    margin: 0 auto;
+    height: 46px;
+    width: 51px;
+    background-image:url("images/pdf.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor:pointer;
+}
+.botonPdf.hover {
+    display: block;
+    margin: 0 auto;
+    height: 46px;
+    width: 51px;
+    background-image:url("images/pdf.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor:pointer;
+}
+
+.botonNoVer {
+    display: block;
+    margin: 0 auto;
+    height: 46px;
+    width: 51px;
+    background-image:url("images/NoVer.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor:pointer;
+}
+.botonNoVer.hover {
+    display: block;
+    margin: 0 auto;
+    display: block;
+    margin: auto;
+    height: 46px;
+    width: 51px;
+    background-image:url("images/NoVer.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor:pointer;
+}
+.botonNoPdf {
+    display: block;
+    margin: 0 auto;
+    height: 46px;
+    width: 51px;
+    background-image:url("images/NoPdf.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor:pointer;
+}
+.botonNoPdf.hover {
+    display: block;
+    margin: 0 auto;
+    height: 46px;
+    width: 51px;
+    background-image:url("images/NoPdf.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor:pointer;
+}
