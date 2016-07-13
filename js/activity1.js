@@ -1,9 +1,11 @@
-var usuario="jsandrea";
-        var nombrearchivo;
+        sessionStorage.setItem("user", "jsandrea")
+        //var usuario="jsandrea";
+        var nombrearchivo="Avianca.pdf";
         var crudServiceBaseUrl = "http://190.144.16.114:8810/rest/Documents/List/";
         var crudServiceGetFile = "http://190.144.16.114:8810/rest/Documents/GetFile/";
         var crudServiceGetFileAsPDF ="http://190.144.16.114:8810/rest/Documents/GetFileAsPDF/";
         $(document).ready(function () {
+            usuario = sessionStorage.getItem("user");
             dataSource = new kendo.data.DataSource({
                 transport: {
                     read:  {
@@ -37,26 +39,35 @@ var usuario="jsandrea";
                     { field: "nomfile", title: "Documento", format: "{0:c}", width: "auto" },
                     { field: "tamfile", title:"Tama&ntilde;o de Archivo", format: "{0:c}", },
                     { field: "fecfile", title:"Fecha de Creacion", format: "{0:c}", },
-                    {command: [{name:"descargar", text: " ",click:showDetails ,template: "<a class='k-grid-Descargar'><span class='k-icon botonDescargar'></span></a>"}] , title: "&nbsp;", width: "82px" },
-                    {command: [{name:"ver", text: " ",click:htmldoc ,template: "<a class='k-grid-Ver'><span class='k-icon botonVer'></span></a>"}] , title: "&nbsp;", width: "82px" },
+                    {command: [{name:"descargar", text: " ",click:showDetails,template: "<a class='k-grid-descargar'><span class='k-icon botonDescargar'></span></a>"}] , title: "&nbsp;", width: "82px" },
+                    {command: [{name:"ver", text: " ",click:htmldoc,template: "<a class='k-grid-ver'><span class='k-icon botonVer'></span></a>"}] , title: "&nbsp;", width: "82px" },
                     {command: [{name:"pdf", text: " ",click:pdf,template: "<a class='k-grid-pdf '><span class='k-icon botonPdf '></span></a>"}] , title: "&nbsp;", width: "82px" }
                 ],
             });
         });
 
         function showDetails(e) {
+            usuario = sessionStorage.getItem("user");
             var Download = new kendo.data.DataSource({
                 transport: {
                     read: {
-                        url: crudServiceGetFile +usuario+nombrearchivo, // url del servicio a consumir
-                        dataType: "json",//, // tipo de dato json
+                        url: crudServiceGetFile +usuario+"/"+nombrearchivo, // url del servicio a consumir
+                        dataType: "json", // tipo de dato json
                     }
                 },
                 schema: {
                     data:"response.polfile",
                 }
             });
-            alert(JSON.stringify(Download))
+           /* console.log(JSON.stringify(Download))
+            alert(objToString(Download));*/
+
+            var dataURI = "data:text/plain;base64," + kendo.util.encodeBase64("Hello World!");
+            kendo.saveAs({
+                dataURI: dataURI,
+                fileName: "test.txt"
+            });
+            
             try {
                 sessionStorage.setItem("tipo", "archivo");
                 e.preventDefault();
@@ -64,6 +75,7 @@ var usuario="jsandrea";
                 var item = $("#grid").data("kendoGrid").dataItem(row);
                 item = item.nomfile;
                 item = item.toString();
+                document.getElementById("botonDescargar").value =  item;
                 formWidgetHandler.saveDataSlots();
             } catch (e) {
                 alert(e);
@@ -77,28 +89,49 @@ var usuario="jsandrea";
                 var item = $("#grid").data("kendoGrid").dataItem(row);
                 item = item.nomfile;
                 item = item.toString();
-                document.getElementById("").value =  item;
-                document.getElementById("").value =  item;
                 formWidgetHandler.saveDataSlots();
-                document.getElementById("").click();
+                document.getElementById("botonVer").click().value =  item;
             } catch (e) {
                 alert(e);
             }
         }
+
         function pdf(e) {
             var DataPDF = new kendo.data.DataSource({
                 transport: {
                     read: {
-                        url: crudServiceGetFileAsPDF+usuario+nombrearchivo, // url del servicio a consumir
+                        url: "http://190.144.16.114:8810/rest/Documents/GetFileAsPDF/"+usuario+"/"+nombrearchivo,
+                        //url: crudServiceGetFileAsPDF+usuario+"/"+nombrearchivo, // url del servicio a consumir
                         dataType: "json",//, // tipo de dato json
+                    },
+
+                    parameterMap: function(options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return {models: kendo.stringify(options.models)};
+                        }
                     }
                 },
+                batch: true,
                 schema: {
-                    data:"response.polfile",
+                    data:"response",
+                    model: {
+                        fields: {
+                            polfile: { type: "string" },
+                            }
+                    }
                 }
             });
-            alert(JSON.stringify(DataPDF))
-            try {
+            console.log("pdf JSon \n"+JSON.stringify(DataPDF));
+
+            var dataURI = "data:text/plain;base64," + kendo.util.encodeBase64(DataPDF);
+            alert(dataURI);
+            kendo.saveAs({
+                dataURI: dataURI,
+                fileName: "Avianca.pdf",
+                proxyURL: "/path/to/proxy"
+            });
+
+            /*try {
                 sessionStorage.setItem("tipo", "pdf");
                 e.preventDefault();
                 var row = $(e.target).closest("tr");
@@ -110,12 +143,25 @@ var usuario="jsandrea";
 
             } catch (e) {
                 alert(e);
-            }
+            }*/
         }
+
+        /**
+         * Permite descargar los archivos
+         *
+         * @param  filename String con el nombre del archivo que se desea deacargar
+         * @param  text
+
+         */
         function download(filename, text, tipo) {
-            var res = filename.split(".");
+            alert ("filename \n"+ objToString(filename))
+            /*var res = filename.split(".");
             filename = res[0];
-            extension = res[1];
+            extension = res[1];*/
+            filename = "act";
+            extension = "archivo";
+            alert ("filename: "+ filename + "extension: "+ extension)
+            alert(filename);
             try {
                 if (tipo == "archivo") {
                     filename = filename + "." + extension;
@@ -178,7 +224,8 @@ var usuario="jsandrea";
             }
         }
 
-        function mensajeAlerta(msj) {
+
+/*        function mensajeAlerta(msj) {
             var notificacionError = $("#notification").kendoNotification({
                 position : {
                     pinned : true,
@@ -197,13 +244,13 @@ var usuario="jsandrea";
                 title : "Ocurrio un Error",
                 message : msj
             }, "error");
-        }
+        }*/
 
         function form_onLoad(eventContext){
             document();}
 
 
-        function showDetailsEditarV2(e){//creacion del popup de CU
+        /*function showDetailsEditarV2(e){//creacion del popup de CU
             try{
                 e.preventDefault();//Aca se pueden colocar las funcionalidades dependiendo del uso del click
                 clickGrilla= this.dataItem($(e.currentTarget).closest("tr"));
@@ -214,4 +261,14 @@ var usuario="jsandrea";
             }catch(e){
                 alert("Function: showDetailsEditarV2 Error: "+e.message);
             }
+        }*/
+
+        function objToString (obj) {
+            var str = '';
+            for (var p in obj) {
+                if (obj.hasOwnProperty(p)) {
+                    str += p + '::' + obj[p] + '\n';
+                }
+            }
+            return str;
         }
